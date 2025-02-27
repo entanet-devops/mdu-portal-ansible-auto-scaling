@@ -18,7 +18,7 @@
       with_dict:
         - "{{  app_env|dict2items|rejectattr(\"key\", \"equalto\", \"key.pem\")|rejectattr(\"key\", \"equalto\", \"cert.pem\")|list|items2dict }}"
 
-   - name: Disable laravel error logging
+    - name: Disable laravel error logging
       lineinfile:
         path: "{{app_directory}}/.env"
         regex: "^APP_DEBUG="
