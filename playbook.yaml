@@ -5,8 +5,8 @@
     ansible_python_interpreter: /usr/bin/python3
     app_env: "{{ lookup('aws_ssm', '{{ ssm_path }}laravel_env', bypath=true, shortnames=true, decrypt=true, recursive=true,region='eu-west-2') }}"
     app_directory: "{{ lookup('aws_ssm', '{{ ssm_path }}app_directory', region='eu-west-2') }}"
-    fsx_user: "{{ lookup('aws_ssm', '/{{ project }}/{{ project_env }}/{{ service_name }}/fsx_user') }}"
-    fsx_pass: "{{ lookup('aws_ssm', '/{{ project }}/{{ project_env }}/{{ service_name }}/fsx_pass') }}"
+    fsx_user: "{{ lookup('aws_ssm', '/{{ project }}/{{ project_env }}/{{ service_name }}/fsx_user',region='eu-west-2') }}"
+    fsx_pass: "{{ lookup('aws_ssm', '/{{ project }}/{{ project_env }}/{{ service_name }}/fsx_pass',region='eu-west-2') }}"
 
   tasks:
     - name: Build env file
