@@ -34,7 +34,7 @@
       shell: 'php artisan operations:process'
       args:
         chdir: "{{ app_directory }}"
-      when: (service_instance_number is defined and service_instance_number == 0) or (service_instance_number is not defined)
+  
 
     - name: Limit amazon-cloudwatch-agent CPU
       no_log: True
@@ -57,10 +57,10 @@
         name: supervisor
         enabled: yes
 
-      - name: mount fsx drive
-        mount:
-          state: mounted
-          fstype: cifs
-          path: /mnt/zdrive
-          src: //198.19.254.10/zdrive
-          opts: "ro,_netdev,username={{ fsx_user }},password={{ fsx_pass }},domain=ad.cityfibre.com"
+    - name: mount fsx drive
+      mount:
+        state: mounted
+        fstype: cifs
+        path: /mnt/zdrive
+        src: //198.19.254.10/zdrive
+        opts: "ro,_netdev,username={{ fsx_user }},password={{ fsx_pass }},domain=ad.cityfibre.com"
