@@ -34,21 +34,6 @@
       shell: 'php artisan operations:process'
       args:
         chdir: "{{ app_directory }}"
-  
-
-    # - name: Limit amazon-cloudwatch-agent CPU
-    #   no_log: True
-    #   lineinfile:
-    #       path: /etc/systemd/system/amazon-cloudwatch-agent.service
-    #       regexp: '^RestartSec=60s'
-    #       line: 'RestartSec=60s\nCPUQuota=30%'
-    #       backrefs: yes
-
-    # - name: Restart Amazon CloudWatch Agent
-    #   no_log: True
-    #   service:
-    #     name: amazon-cloudwatch-agent
-    #     state: restarted
 
     - name: start supervisor
       no_log: True
